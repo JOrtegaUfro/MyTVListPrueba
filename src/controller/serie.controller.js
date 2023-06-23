@@ -22,7 +22,9 @@ async function createPersonalSerie(req, res) {
 
 
 async function getSerieByUser(req, res) {
-    
+  const userId = req.params.userId;
+  const series = await SerieModel.find({ userId: userId });
+  res.send({ series });
 }
 
 async function deletePersonalSerieById(req,res){
