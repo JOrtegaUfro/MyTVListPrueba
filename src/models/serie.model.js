@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const serieSchema = new mongoose.Schema({
-  name: {
+  nombre: {
     type: String,
     required: true,
   },
