@@ -12,11 +12,6 @@ const userSchema = new mongoose.Schema({
         required:true,
         min: 5,
     },
-    dni: {
-        type:Number,
-        required:true,
-        min: 8,
-    },
     password:{
         type:String,
         required:true,

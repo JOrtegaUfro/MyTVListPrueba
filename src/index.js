@@ -1,7 +1,8 @@
 import express from 'express';
-import authenticacionRouter from './routes/authentication.routes.js';
-import usersRouter from './routes/user.routes.js';
-import seriesRouter from './routes/serie.routes.js';
+import authenticacionRouter from './routes/auth.routers.js';
+import usersRouter from './routes/users.routes.js';
+import cors from 'cors';
+
 import { PORT } from './configs/environments.js'
 import connectDB from './configs/mongo.js';
 
@@ -13,7 +14,6 @@ app.use(express.json());
 
 app.use("/auth",authenticacionRouter)
 app.use("/users",usersRouter);
-app.use("/series",seriesRouter);
 
 
 
