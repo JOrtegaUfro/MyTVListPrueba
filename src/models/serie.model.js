@@ -26,7 +26,6 @@ const serieSchema = new mongoose.Schema({
   },
   userId:{
     type: String,
-    required:true
   }
 });
 const SerieModel = mongoose.model("Serie", serieSchema);

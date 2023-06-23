@@ -2,7 +2,7 @@ import SerieModel from "../models/serie.model.js";
 
 async function createPersonalSerie(req, res) {
   try {
-    if (!req.body.nombre || !req.body.estado || !req.body.capítulos || !req.body.minutos) {
+    if (!req.body.nombre || !req.body.estado || !req.body.capitulos || !req.body.minutos) {
       return res.status(400).send({ success: false, error: "Falta algún campo como nombre, estado, capítulos, minutos" });
     }
     await SerieModel.create({
@@ -10,7 +10,7 @@ async function createPersonalSerie(req, res) {
       nombre: req.body.nombre,
       portada: req.body.portada,
       estado: req.body.estado,
-      capítulos: req.body.capítulos,
+      capitulos: req.body.capitulos,
       minutos: req.body.minutos,
     });
 
