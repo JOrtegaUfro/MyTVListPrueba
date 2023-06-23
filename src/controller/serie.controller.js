@@ -62,7 +62,7 @@ async function editPersonalSerie(req, res) {
     serie.estado = req.body.estado;
     await serie.save();
 
-    res.status(200).send({ success: true, serie });
+    res.status(200).send({ success: true});
   } catch (error) {
     res.status(500).send({ success: false, error: error.message });
   }
