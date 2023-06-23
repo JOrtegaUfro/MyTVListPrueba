@@ -1,10 +1,11 @@
-import {Router} from 'express';
-import { listarUsers,mensajeUsuario } from '../controller/user.controller.js';
-
+import {Router} from "express";
+import {createPersonalSerie , deletePersonalSerieById, getSerieByUser,editPersonalSerie} from "../controller/serie.controller.js";
 const router = Router();
 
-router.get('/', listarUsers);
-router.get('/:IdUser/messages',mensajeUsuario);
 
+router.post("/:userId/series",createPersonalSerie);
+router.get("/:userId/series",getSerieByUser);
+router.delete("/:userId/series/:serieId",deletePersonalSerieById);
+router.put("/:userId/series/:serieId",editPersonalSerie);
 
 export default router;
