@@ -1,21 +1,20 @@
 import express from 'express';
-import userRouter from './routes/users.routes.js';
-import authRouter from './routes/auth.routers.js';
-import messageRouter from './routes/messages.routes.js';
+import authenticacionRouter from './routes/authentication.routes.js';
+import usersRouter from './routes/user.routes.js';
+import seriesRouter from './routes/serie.routes.js';
 import { PORT } from './configs/environments.js'
 import connectDB from './configs/mongo.js';
 
 
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.status(201).send('Javier Ortega');
-});
-app.use("/auth",authRouter);
-app.use("/users",userRouter);
-app.use("/messages",messageRouter);
+
+app.use("/auth",authenticacionRouter)
+app.use("/users",usersRouter);
+app.use("/series",seriesRouter);
+
 
 
 async function startSever() {
