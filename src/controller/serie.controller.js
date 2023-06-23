@@ -28,7 +28,23 @@ async function getSerieByUser(req, res) {
 }
 
 async function deletePersonalSerieById(req,res){
-    
+  try {
+    const userId = req.params.userId;
+    const serieId = req.params.serieId;
+    const serie = await SerieModel.findOne({ userId, _id: serieId });
+    if (!serie) {
+      return res.status(403).send({ error: "No corresponde el usuario logueado con el usuario creador del mensaje" });
+    }
+
+    const deletionResult = await SerieModel.deleteOne({ _id: serieId });
+    if (deletionResult.deletedCount === 1) {
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
 }
 
 
@@ -36,7 +52,7 @@ async function editPersonalSerie(req,res){
     const userId = req.params.useId;
     const serieId = req.params.serieId;
     const series = await SerieModel.find().populate("userId"&&"serieId");
-    const matchSeries= series.filter(serie => serie.userId === userId&&serie.serieId === serieId);
+    const matchSeries = series.filter(serie => serie.userId === userId&&serie.serieId === serieId);
     
     try{
     if(matchMensajes.length>0){
